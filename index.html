@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Balance</title>
     <link rel="stylesheet" href="stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -15,8 +17,9 @@
         <input type="button" value="PLAY!">
     </div>
     <div id="gameOver">
-        <table><th>HIGHSCORE</th></table>
-        <input type="text">
+       <h1></h1>
+        <table><th colspan="2">HIGHSCORE</th></table>
+        <input type="text" name="name" placeholder="ENTER NAME...">
         <input type="button" value="Retry">
         <input type="button" value="Submit" id="submit">
     </div>

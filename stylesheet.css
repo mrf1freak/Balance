@@ -44,12 +44,14 @@ body div {
     top: 0px;
     z-index: 10;
     background: rgba(0, 0, 0, 0.75);
+    padding-top: 100px;
     
 }
 #gameOver h1{
     margin: 0;
     padding: 0;
     color: #fff;
+    font-size: 2em;
 }
 #gameOver input[type="text"]{
     width: 85%;

@@ -7,19 +7,18 @@ var playing = false;
 var _score;
 $(document).ready(function () {
     $.ajax({
-           url: "database.php",
-           method: "GET",
-           success: function(result){
-               var data = JSON.parse(result);
-               for(i = 0; i < 6; i++){
-                   $("table").append("<tr><td>" + data[i].name + "</td><td>" + parseFloat(data[i].score/10).toFixed(1) + "</td></tr>")
-               }
-           }
-       });
-    
-    
-//  BALL OBJECT
-    
+        url: "database.php",
+        method: "GET",
+        success: function (result) {
+            var data = JSON.parse(result);
+            for (i = 0; i < 6; i++) {
+                $("table").append("<tr><td>" + data[i].name + "</td><td>" + parseFloat(data[i].score / 10).toFixed(1) + "</td></tr>")
+            }
+        }
+    });
+
+    //  BALL OBJECT
+
     var ball = {
         x: 0.465 * clientWidth,
         y: 0.5 * clientHeight - 0.035 * clientWidth,
@@ -41,36 +40,40 @@ $(document).ready(function () {
         $("#gameOver").fadeOut(500);
         startGame();
     });
-    $("#gameOver #submit").click(function(){
+    $("#gameOver #submit").click(function () {
         var _name = $("#gameOver input[name='name']").val();
-        var data = {name: _name, score: _score * 10};
-       $.ajax({
-           url: "database.php",
-           data: data,
-           method: "GET",
-           success: function(result){
-               console.log(result);
-           }
-       });
+        var data = {
+            name: _name,
+            score: _score * 10
+        };
+        $.ajax({
+            url: "database.php",
+            data: data,
+            method: "GET",
+            success: function (result) {
+                console.log(result);
+            }
+        });
         $(this).css({
             padding: "0px",
             margin: "0px",
             width: "0px"
         });
-       console.log('done');
+        console.log('done');
     });
 
 
     function startGame() {
         playing = true;
         time = 0;
-     clock = setInterval(function () {
+        clock = setInterval(function () {
             time += 1;
-            $("#timer").html(parseFloat(time/10).toFixed(1))
+            $("#timer").html(parseFloat(time / 10).toFixed(1))
         }, 100);
         window.addEventListener('deviceorientation', orientaionHandler);
     }
-    function gameOver(){
+
+    function gameOver() {
         playing = false;
         removeEventListener('deviceorientation', orientaionHandler);
         $("#gameOver").fadeIn(500);
@@ -81,7 +84,7 @@ $(document).ready(function () {
         ball.accX = 0;
         ball.accY = 0;
         window.clearInterval(clock);
-        _score = parseFloat(time/10).toFixed(1);
+        _score = parseFloat(time / 10).toFixed(1);
         $("#gameOver h1").html("Your Score: " + _score);
     }
 
@@ -93,19 +96,19 @@ $(document).ready(function () {
 
 
     function animate() {
-        if(ball.x <= 0 || ball.y <= 0 || ball.x > clientWidth - ball.size || ball.y > clientHeight - ball.size){
+        if (ball.x <= 0 || ball.y <= 0 || ball.x > clientWidth - ball.size || ball.y > clientHeight - ball.size) {
             gameOver();
         }
-        if(Math.random() < 0.01 && playing){
+        if (Math.random() < 0.01 && playing) {
             ball.velX += Math.random() * 0.075;
             ball.velY += Math.random() * 0.075;
             console.log("BUMP");
         }
-        
-        
+
+
         ball.prevX = ball.x;
         ball.prevY = ball.y;
-        
+
         ball.velX += ball.accX;
         ball.velY += ball.accY;
 
