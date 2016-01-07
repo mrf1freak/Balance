@@ -2,6 +2,7 @@ var clientWidth = parseInt(window.innerWidth);
 var clientHeight = parseInt(window.innerHeight);
 var time = 0;
 var clock;
+var playing = false;
 
 var _score;
 $(document).ready(function () {
@@ -17,9 +18,12 @@ $(document).ready(function () {
        });
     
     
+//  BALL OBJECT
+    
     var ball = {
         x: 0.465 * clientWidth,
         y: 0.5 * clientHeight - 0.035 * clientWidth,
+        prevX: 0.465 * clientWidth,
         velX: 0,
         velY: 0,
         accX: 0,
@@ -31,6 +35,7 @@ $(document).ready(function () {
     $("#startScreen input").click(function () {
         $("#startScreen").fadeOut(500);
         startGame();
+        console.log("CHECK");
     });
     $("#gameOver input[value='Retry']").click(function () {
         $("#gameOver").fadeOut(500);
@@ -57,6 +62,7 @@ $(document).ready(function () {
 
 
     function startGame() {
+        playing = true;
         time = 0;
      clock = setInterval(function () {
             time += 1;
@@ -65,6 +71,7 @@ $(document).ready(function () {
         window.addEventListener('deviceorientation', orientaionHandler);
     }
     function gameOver(){
+        playing = false;
         removeEventListener('deviceorientation', orientaionHandler);
         $("#gameOver").fadeIn(500);
         ball.x = 0.465 * clientWidth;
@@ -89,6 +96,16 @@ $(document).ready(function () {
         if(ball.x <= 0 || ball.y <= 0 || ball.x > clientWidth - ball.size || ball.y > clientHeight - ball.size){
             gameOver();
         }
+        if(Math.random() < 0.01 && playing){
+            ball.velX += Math.random() * 0.075;
+            ball.velY += Math.random() * 0.075;
+            console.log("BUMP");
+        }
+        
+        
+        ball.prevX = ball.x;
+        ball.prevY = ball.y;
+        
         ball.velX += ball.accX;
         ball.velY += ball.accY;
 

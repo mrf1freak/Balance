@@ -23,6 +23,7 @@ body div {
     text-align: center;
     color: #eee;
     font-size: 1.5em;
+    padding-top: 100px;
 }
 #startScreen input {
     background: #3A9AD9;
