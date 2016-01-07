@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Balance</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="startScreen">
+        <div style="margin-top:75px;">
+            <h1>TURN OFF AUTO-ROTATE!</h1><br>
+            <h1>DONT LET IT TOUCH THE SIDES</h1>
+            <input type="button" value="PLAY!">
+        </div>
+    </div>
+    <div id="gameOver">
+       <div style="margin-top:100px;">
+        <h1>Your Score: 10.0</h1><br>
+        <table>
+            <th colspan="2">HIGH SCORES:</th>
+        </table>
+        <input type="text" placeholder="Enter your name.." name="name"><br>
+        <input type="button" value="Retry">
+        <input type="button" value="Submit Score" id="submit">
+        </div>
+    </div>
+    <div id="timer">0.0</div>
+    <div id="ball"></div>
+</body>
+
+</html>
