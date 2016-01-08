@@ -37,6 +37,18 @@ $(document).ready(function () {
         console.log("CHECK");
     });
     $("#gameOver input[value='Retry']").click(function () {
+        $.ajax({
+        url: "database.php",
+        method: "GET",
+        success: function (result) {
+            var data = JSON.parse(result);
+            $("table").empty();
+            $("table").append("<th colspan='2'>HIGHSCORE</th>")
+            for (i = 0; i < 6; i++) {
+                $("table").append("<tr><td>" + data[i].name + "</td><td>" + parseFloat(data[i].score / 10).toFixed(1) + "</td></tr>")
+            }
+        }
+    });
         $("#gameOver").fadeOut(500);
         startGame();
     });
