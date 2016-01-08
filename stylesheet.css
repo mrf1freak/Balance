@@ -114,9 +114,9 @@ tr:last-child td{
     z-index: 9;
 }
 #timer {
-    font-size: 1.75em;
-    color: rgba(0, 0, 0, 0.5);
-    font-family: Fira Mono;
+    font-size: 2.5em;
+    color: rgba(0, 0, 0, 0.35);
+    font-family: 'Inconsolata';
 }
 ::-webkit-scrollbar { 
     display: none; 
