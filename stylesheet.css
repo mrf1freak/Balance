@@ -125,3 +125,7 @@ tr:last-child td{
     font-family: Uni Sans;
     src: url(fonts/UniSansThin.otf)
 }
+iframe {
+    width: 100%;
+    height: 100vh;
+}
